@@ -1,0 +1,14 @@
+package com.InventoryService.Inventory.service.Repository;
+
+import com.InventoryService.Inventory.service.model.Inventory;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface InventoryRepository extends JpaRepository<Inventory, Long> {
+
+    // Correct the method name to match the field name 'skuCode'
+    Optional<Inventory> findBySkuCode(String skuCode);
+}
