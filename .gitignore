@@ -8,6 +8,7 @@
 # Ignore log files and temporary files
 *.log
 *.tmp
+*.txt
 
 # Ignore build artifacts
 *.class

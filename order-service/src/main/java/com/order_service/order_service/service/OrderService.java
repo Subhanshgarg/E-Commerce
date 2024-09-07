@@ -1,5 +1,5 @@
 package com.order_service.order_service.service;
-
+import com.order_service.order_service.DTO.InventoryResponse;
 import com.order_service.order_service.DTO.OrderLineItemDTO;
 import com.order_service.order_service.DTO.OrderRequest;
 import com.order_service.order_service.model.Order;
@@ -8,7 +8,9 @@ import com.order_service.order_service.repository.OrderRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,6 +18,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class OrderService {
     private final OrderRepository orderRepository;
+    private final WebClient webClient;
 
     @Transactional
     public void placeOrder(OrderRequest orderRequest) {
@@ -26,7 +29,20 @@ public class OrderService {
         Order order = new Order();
         order.setOrderNumber(UUID.randomUUID().toString());
         order.setOrderLineItemsList(orderLineItems);
-        orderRepository.save(order);
+
+        //Call Inventory Service to check availaibilty
+
+        List<String> skuCodes=order.getOrderLineItemsList().stream().map(OrderLineItems::getSkuCode).toList();
+        InventoryResponse[] inventoryResponseArray= webClient.get().uri("http://localhost:8082/api/inventory/", uriBuilder -> uriBuilder.queryParam("skuCode",skuCodes).build())
+                        .retrieve()
+                                .bodyToMono(InventoryResponse[].class)
+                                        .block();
+        boolean allItemsInStock= Arrays.stream(inventoryResponseArray).allMatch(InventoryResponse::isInStock);
+        if(allItemsInStock) {
+            orderRepository.save(order);
+        }
+        else
+            throw new IllegalArgumentException("product is not in stock, please try again");
     }
 
     private OrderLineItems mapToOrderLineItems(OrderLineItemDTO orderLineItemDTO) {

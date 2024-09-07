@@ -1,3 +1,4 @@
+com\order_service\order_service\DTO\InventoryResponse.class
 com\order_service\order_service\Controller\OrderController.class
 com\order_service\order_service\model\OrderLineItems.class
 com\order_service\order_service\DTO\OrderLineItemDTO.class
@@ -9,4 +10,6 @@ com\order_service\order_service\service\OrderService.class
 com\order_service\order_service\DTO\OrderLineItemDTO$OrderLineItemDTOBuilder.class
 com\order_service\order_service\model\Order$OrderBuilder.class
 com\order_service\order_service\model\Order.class
+com\order_service\order_service\Config\WebClientConfig.class
+com\order_service\order_service\DTO\InventoryResponse$InventoryResponseBuilder.class
 com\order_service\order_service\OrderServiceApplication.class

@@ -1,21 +1,25 @@
 package com.InventoryService.Inventory.service.Service;
 
+import com.InventoryService.Inventory.service.DTO.InventoryResponse;
 import com.InventoryService.Inventory.service.Repository.InventoryRepository;
 import com.InventoryService.Inventory.service.model.Inventory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
 public class InventoryService {
     private final InventoryRepository inventoryRepository;
-    public boolean isInStock(String skuCode) {
-        Optional<Inventory> inventoryOptional= inventoryRepository.findBySkuCode(skuCode);
-        if(inventoryOptional.isPresent() &&  inventoryOptional.get().getQuantity()>0)
-                return true;
-        return false;
+    public List<InventoryResponse> isInStock(List<String> skuCode) {
+        return inventoryRepository.findBySkuCodeIn(skuCode).stream().map(inventory ->
+            InventoryResponse.builder().skuCode(inventory.getSkuCode())
+                    .isInStock(inventory.getQuantity()>0).build()
+        ).toList();
     }
 }
