@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a734f3a-acaa-485c-b3d4-e2a933029a3e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +73,9 @@
       <recent name="C:\Users\subha\Desktop\Microservices-Parent\product-service" />
       <recent name="C:\Users\subha\Desktop\Microservices-Parent\order-service" />
       <recent name="C:\Users\subha\Desktop\Microservices-Parent\inventory-service" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\subha\Desktop\Microservices-Parent\.idea" />
     </key>
   </component>
   <component name="RunManager" selected="Application.InventoryServiceApplication">
