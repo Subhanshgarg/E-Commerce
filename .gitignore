@@ -1,20 +1,43 @@
-# Ignore IntelliJ IDEA project files
-.idea/
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
 *.iml
+*.ipr
 
-# Ignore Maven target directory
-/target/
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-# Ignore log files and temporary files
-*.log
-*.tmp
-*.txt
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# Ignore build artifacts
-*.class
-*.jar
-*.war
+### VS Code ###
+.vscode/
 
-# Ignore IDE-specific files
+### Mac OS ###
 .DS_Store
-*.swp
+/mysql/
+/volume-data/
+/data/
+/docker/tempo/tempo-data/
+/docker/tempo/tempo-data/
